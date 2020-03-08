@@ -7,17 +7,33 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.HashMap;
 
+/**
+ * MemoryCache Enum
+ *
+ * @author wuzhijie
+ * @date 2020/03/08
+ */
+
 @Log
 public enum MemoryCache {
 
+    /**
+     * 唯一实例
+     */
     INSTANCE;
 
-    // 缓存内容列表,HashMap实现
+    /**
+     * 缓存内容列表,HashMap实现
+     */
     private HashMap<String, Object> l;
-    // 缓存过期时间,HashMap实现
+    /**
+     * 缓存过期时间,HashMap实现
+     */
     private HashMap<String, Long> t;
 
-    // 初始化
+    /**
+     * 初始化
+     */
     MemoryCache() {
         // 初始容量均定为100
         l = new HashMap<String, Object>(100);
@@ -131,13 +147,23 @@ public enum MemoryCache {
         return false;
     }
 
-    // 删除缓存内容
+    /**
+     * 删除缓存内容
+     *
+     * @param key 缓存key
+     * @return true:删除成功
+     */
     public boolean removeKey(String key) {
         l.remove(key);
         return true;
     }
 
-    // 删除过期时间
+    /**
+     * 删除过期时间
+     *
+     * @param key 缓存key
+     * @return true:删除成功
+     */
     public boolean removeTimeOut(String key) {
         t.remove(key);
         return true;
